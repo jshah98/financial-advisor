@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-77^-vfjad-cg0mx3$r3qo9oz5k%)e*npg806-21o@232qg12we'
+SECRET_KEY = config('DJ_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'financial_advisor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,10 +77,15 @@ WSGI_APPLICATION = 'financial_advisor.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('CLOUD_SQL_NAME'),  # Replace with your database name
+        'USER': config('CLOUD_SQL_USER'),  # Replace with your database username
+        'PASSWORD': config('CLOUD_SQL_PASSWORD'),  # Replace with your password
+        'HOST': config('CLOUD_SQL_HOST'),  # Public or private IP of your Cloud SQL instance
+        'PORT': config('CLOUD_SQL_PORT'),  # Default PostgreSQL port
     }
 }
+
 
 
 # Password validation
