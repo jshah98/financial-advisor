@@ -1,17 +1,48 @@
 {% load static %}
+<div class="container py-5 d-flex justify-content-center align-items-center">
+    <div class="row align-items-center">
+        <!-- Left Image -->
+        <div class="col-md-5 text-center">
+            <img src="{% static 'home.jpg' %}" alt="Financial Journey" class="img-fluid rounded shadow-sm featurette-image img-fluid mx-auto" width="400" height="400">
+        </div>
+        <!-- Right Content -->
+        <div class="col-md-6 px-4">
+            <h1 class="text-start mb-5">Your Journey to Financial Security</h1>
 
-<div class="container marketing my-4 py-4">
-    <hr class="featurette-divider">
+            <div class="row g-4">
+                <!-- Step 1 -->
+                <div class="col-12 d-flex align-items-center">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; font-size: 24px; margin-right: 20px;">
+                        1
+                    </div>
+                    <div>
+                        <h5 class="text-start mb-1">Tell Us About Yourself</h5>
+                        <p class="text-start mb-0">Share your goals and financial situation so we can tailor a solution for you.</p>
+                    </div>
+                </div>
 
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span></h2>
-        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-      </div>
-      <div class="col-md-5">
-        <img src="{% static 'family.jpg' %}" alt="Financial Freedom" class="img-fluid rounded shadow-sm featurette-image img-fluid mx-auto" width="400" height="400">
-      </div>
+                <!-- Step 2 -->
+                <div class="col-12 d-flex align-items-center">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; font-size: 24px; margin-right: 20px;">
+                        2
+                    </div>
+                    <div>
+                        <h5 class="text-start mb-1">Get the Right Resources</h5>
+                        <p class="text-start mb-0">Access tools and guidance tailored to your financial needs.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="col-12 d-flex align-items-center">
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; font-size: 24px; margin-right: 20px;">
+                        3
+                    </div>
+                    <div>
+                        <h5 class="text-start mb-1">Become Financially Secure</h5>
+                        <p class="text-start mb-0">Achieve your goals and enjoy peace of mind with our ongoing support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
 </div>
