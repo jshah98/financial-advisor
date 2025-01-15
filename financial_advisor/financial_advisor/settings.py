@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 from decouple import config
 
+
+# Are we ready for new users?
+ALLOW_NEW_USERS=False
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -76,13 +80,17 @@ WSGI_APPLICATION = 'financial_advisor.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('CLOUD_SQL_NAME'),  # Replace with your database name
-        'USER': config('CLOUD_SQL_USER'),  # Replace with your database username
-        'PASSWORD': config('CLOUD_SQL_PASSWORD'),  # Replace with your password
-        'HOST': config('CLOUD_SQL_HOST'),  # Public or private IP of your Cloud SQL instance
-        'PORT': config('CLOUD_SQL_PORT'),  # Default PostgreSQL port
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': config('CLOUD_SQL_NAME'),  # Replace with your database name
+    #     'USER': config('CLOUD_SQL_USER'),  # Replace with your database username
+    #     'PASSWORD': config('CLOUD_SQL_PASSWORD'),  # Replace with your password
+    #     'HOST': config('CLOUD_SQL_HOST'),  # Public or private IP of your Cloud SQL instance
+    #     'PORT': config('CLOUD_SQL_PORT'),  # Default PostgreSQL port
+    # }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "mydatabase",
     }
 }
 
@@ -123,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'website/static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
