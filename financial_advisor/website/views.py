@@ -50,6 +50,8 @@ def home(request):
 
 
 def register(request):
+    action = request.POST.get("action")
+    
     if settings.ALLOW_NEW_USERS:
         if request.method == 'POST':
             # Handle the normal registration process here
@@ -61,15 +63,25 @@ def register(request):
     else:
         if request.method == 'POST':
             email = request.POST.get('email')
-            if email:
-                # Add the email to the waitlist
-                try:
-                    WaitlistedUser.objects.create(email=email)
-                    messages.success(request, 'You have been added to the waitlist.')
-                except:
-                    messages.error(request, 'This email is already on the waitlist.')
-            else:
-                messages.error(request, 'Please provide a valid email.')
+            if action == "newsletter":
+                if email:
+                    if Subscriber.objects.filter(email=email).exists():
+                        messages.info(request, "You're already subscribed to the newsletter.")
+                    else:
+                        Subscriber.objects.create(email=email)
+                        messages.success(request, "Thank you for subscribing to our newsletter!")
+                else:
+                    messages.error(request, "Please enter a valid email address.")
+            else: 
+                if email:
+                    # Add the email to the waitlist
+                    try:
+                        WaitlistedUser.objects.create(email=email)
+                        messages.success(request, 'You have been added to the waitlist.')
+                    except:
+                        messages.error(request, 'This email is already on the waitlist.')
+                else:
+                    messages.error(request, 'Please provide a valid email.')
         return render(request, 'waitlist.html')  # Render waitlist form
 
 
